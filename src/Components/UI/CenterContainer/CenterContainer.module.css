@@ -1,0 +1,6 @@
+.centerContainer {
+  height: calc(100vh - 70px);
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}

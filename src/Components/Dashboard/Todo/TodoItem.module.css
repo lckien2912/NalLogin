@@ -1,0 +1,74 @@
+.todoItem {
+  display: flex;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.todoItem:hover {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.date {
+  min-width: 100px;
+}
+
+.detail {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.detail h2 {
+  margin: 0;
+}
+
+.todoItem:hover p {
+  color: #fff;
+}
+
+.todoItem:hover button {
+  color: #fff;
+}
+
+.detail p {
+  color: #000;
+  transition: ease-in-out 0.2s;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  margin-right: 6px;
+}
+
+.action button {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  transition: ease-in-out 0.2s;
+  cursor: pointer;
+}
+
+.action button:hover {
+  background-color: #333;
+  color: white;
+}
+
+.todoItem:hover button:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+.action button:nth-child(2):hover {
+  background-color: red;
+}
+
+.todoItem:hover button:nth-child(2):hover {
+  color: #fff;
+}

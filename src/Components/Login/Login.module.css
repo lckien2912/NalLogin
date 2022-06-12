@@ -1,0 +1,50 @@
+.login-form {
+  width: 400px;
+  padding: 30px;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+
+  font-size: 1.4rem;
+}
+
+.form-control {
+  margin-bottom: 20px;
+}
+
+.loginBtn {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.control {
+  margin: 1.6rem 0;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.control label,
+.control input {
+  display: block;
+}
+
+.control label {
+  font-weight: bold;
+  flex: 1;
+  color: #464646;
+  margin-bottom: 0.8rem;
+}
+
+.control input {
+  flex: 3;
+  font: inherit;
+  padding: 1rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.control input:focus {
+  outline: none;
+  border-color: #333;
+}
