@@ -72,8 +72,8 @@ export default function NewTodoForm({ saveData }) {
         <div className={classes["form-control"]}>
           <div className={classes.control}>
             <label>Title</label>
-            <input
-              type="text"
+            <textarea
+              rows="1"
               placeholder="Title"
               {...register("title", { required: true, maxLength: 100 })}
             />
@@ -81,8 +81,7 @@ export default function NewTodoForm({ saveData }) {
           </div>
           <div className={classes.control}>
             <label>Description</label>
-            <input
-              type="text"
+            <textarea
               placeholder="Description"
               {...register("description", { required: true, maxLength: 999 })}
             />

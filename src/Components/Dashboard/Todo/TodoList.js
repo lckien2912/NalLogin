@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./TodoList.module.css";
 import TodoItem from "./TodoItem";
+// import { Pagination } from "antd";
 
 function TodoList({ data, deleteItem }) {
   return (
@@ -20,6 +21,12 @@ function TodoList({ data, deleteItem }) {
           );
         })}
       </ul>
+      {/* <Pagination
+        size="small"
+        defaultCurrent={2}
+        total={data.length}
+        pageSize={2}
+      /> */}
     </>
   );
 }

@@ -14,3 +14,12 @@
   height: 100%;
   border-radius: 50%;
 }
+
+.logoutBtn {
+  width: 100%;
+}
+
+.logoutBtn:hover {
+  background-color: red;
+  border-color: red;
+}

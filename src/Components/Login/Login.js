@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import classes from "./Login.module.css";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import ErrMsg from "../UI/ErrMsg/ErrMsg";
 import CenterContainer from "../UI/CenterContainer/CenterContainer";
+import { REGEX_PASSWORD, REGEX_EMAIL } from "../../Constant/Constant";
+import { AuthContext } from "../../store/AuthProvider";
 
-export default function Login({ onLogin }) {
+export default function Login() {
+  const { loginHandler } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -14,7 +18,7 @@ export default function Login({ onLogin }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    onLogin(data);
+    loginHandler(data);
   };
 
   const errorEmail = () => {
@@ -84,7 +88,7 @@ export default function Login({ onLogin }) {
               placeholder="Enter your email"
               {...register("email", {
                 required: true,
-                pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                pattern: REGEX_EMAIL,
                 minLength: 5,
                 maxLength: 20,
               })}
@@ -98,7 +102,7 @@ export default function Login({ onLogin }) {
               placeholder="Please enter your password"
               {...register("password", {
                 required: true,
-                pattern: /^[A-Za-z]+$/,
+                pattern: REGEX_PASSWORD,
                 maxLength: 20,
                 minLength: 5,
               })}

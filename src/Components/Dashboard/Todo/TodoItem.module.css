@@ -22,6 +22,10 @@
   flex-direction: column;
 }
 
+.detail p {
+  font-size: 1.2rem;
+}
+
 .detail h2 {
   margin: 0;
 }
