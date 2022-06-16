@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { USERS } from "../../constant/constant";
 import { notification } from "antd";
 import "antd/dist/antd.css";
@@ -17,7 +17,7 @@ const AuthContextProvider = ({ children }) => {
       setIsLoggedIn(true);
       setRole(validUser.role);
       localStorage.setItem("isLoggedIn", "1");
-      localStorage.setItem("role", validUser.role)
+      localStorage.setItem("role", validUser.role);
     } else {
       notification.open({
         message: "Login Failed",
@@ -32,7 +32,7 @@ const AuthContextProvider = ({ children }) => {
   const logoutHandler = () => {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
-    setRole("")
+    setRole("");
   };
 
   return (

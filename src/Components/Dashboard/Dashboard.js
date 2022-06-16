@@ -7,7 +7,6 @@ import NewTodoForm from "./Todo/NewTodoForm";
 
 function Dashboard() {
   const [data, setData] = useState([]);
-  const [editItem, setEditItem] = useState({});
 
   useEffect(() => {
     const storedTodoList = localStorage.getItem("LIST_KEY");
@@ -36,7 +35,7 @@ function Dashboard() {
   return (
     <CenterContainer>
       <Card className={classes.home}>
-        <NewTodoForm saveData={saveData} editItem={editItem}></NewTodoForm>
+        <NewTodoForm saveData={saveData}></NewTodoForm>
         <Todo newData={data} deleteItem={deleteItem}></Todo>
       </Card>
     </CenterContainer>

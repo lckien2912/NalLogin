@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import classes from "./Modal.module.css";
-import { AuthContext } from "../../../store/Context/AuthContext";
 
 const modalRootDiv = document.createElement("div");
 modalRootDiv.id = "modal-root";

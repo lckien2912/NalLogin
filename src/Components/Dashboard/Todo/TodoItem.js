@@ -2,19 +2,24 @@ import React, { useContext, useState } from "react";
 import classes from "./TodoItem.module.css";
 import TodoDate from "./TodoDate";
 import Modal from "../../UI/Modal/Modal";
+import EditModal from "../../UI/Modal/EditModal";
 import { AuthContext } from "../../../store/Context/AuthContext";
 
 function TodoItem({ date, description, title, id, deleteItem }) {
   const { role } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
+  const [editVisible, setEditVisible] = useState(false);
 
   const deleteHandler = () => {
     deleteItem(id);
-    // setVisible(true);
   };
 
   const openModal = () => {
     setVisible(true);
+  };
+
+  const openEditModal = () => {
+    setEditVisible(true);
   };
 
   return (
@@ -27,7 +32,7 @@ function TodoItem({ date, description, title, id, deleteItem }) {
         </div>
         {role === "Admin" && (
           <div className={classes.action}>
-            <button>
+            <button onClick={openEditModal}>
               <i className="fa-solid fa-pencil"></i>
             </button>
             <button onClick={openModal}>
@@ -43,6 +48,14 @@ function TodoItem({ date, description, title, id, deleteItem }) {
         title="Delete Item?"
         message="Are you sure you want to delete this item?"
       ></Modal>
+      <EditModal
+        date={date}
+        title={title}
+        description={description}
+        id={id}
+        visible={editVisible}
+        setVisible={setEditVisible}
+      />
     </>
   );
 }

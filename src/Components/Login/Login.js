@@ -59,7 +59,7 @@ export default function Login() {
       case "maxLength":
         return (
           <ErrMsg className={classes.errors}>
-            Your password length must be less than 20 characters
+            Your password length must be less than 20 chars
           </ErrMsg>
         );
       case "minLength":
