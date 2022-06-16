@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+
 import classes from "./Login.module.css";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import ErrMsg from "../UI/ErrMsg/ErrMsg";
 import CenterContainer from "../UI/CenterContainer/CenterContainer";
+import { AuthContext } from "../../store/Context/AuthContext";
 
-export default function Login({ onLogin }) {
+export default function Login() {
+  const { loginHandler } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -14,7 +18,7 @@ export default function Login({ onLogin }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    onLogin(data);
+    loginHandler(data);
   };
 
   const errorEmail = () => {
@@ -105,6 +109,7 @@ export default function Login({ onLogin }) {
             />
             {errors.password && errorPassword()}
           </div>
+
           <Button className={classes.loginBtn} type="submit">
             Login
           </Button>

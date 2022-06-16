@@ -1,16 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Dashboard.module.css";
 import Card from "../UI/Card/Card";
-import UserInfo from "./UserInfo/UserInfo";
 import Todo from "./Todo/Todo";
 import CenterContainer from "../UI/CenterContainer/CenterContainer";
+import NewTodoForm from "./Todo/NewTodoForm";
 
-function Dashboard({ onLogout, role }) {
+function Dashboard() {
+  const [data, setData] = useState([]);
+  const [editItem, setEditItem] = useState({});
+
+  useEffect(() => {
+    const storedTodoList = localStorage.getItem("LIST_KEY");
+    if (storedTodoList) {
+      setData(JSON.parse(storedTodoList));
+    }
+  }, []);
+
+  const saveData = (data) => {
+    setData((prevData) => {
+      localStorage.setItem("LIST_KEY", JSON.stringify([data, ...prevData]));
+      return [data, ...prevData];
+    });
+  };
+
+  const deleteItem = (id) => {
+    setData((prevList) => {
+      localStorage.setItem(
+        "LIST_KEY",
+        JSON.stringify(prevList.filter((item) => item.id !== id))
+      );
+      return prevList.filter((item) => item.id !== id);
+    });
+  };
+
   return (
     <CenterContainer>
       <Card className={classes.home}>
-        <UserInfo role={role} onLogout={onLogout} />
-        <Todo></Todo>
+        <NewTodoForm saveData={saveData} editItem={editItem}></NewTodoForm>
+        <Todo newData={data} deleteItem={deleteItem}></Todo>
       </Card>
     </CenterContainer>
   );

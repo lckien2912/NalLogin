@@ -1,6 +1,5 @@
-.todoList {
-  height: 220px;
-  overflow-y: scroll;
+.heading {
+  margin-top: 1.5rem;
 }
 
 ::-webkit-scrollbar {
@@ -15,4 +14,20 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 2px;
   background: #333;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.todoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.todoList {
+  flex: 1;
 }

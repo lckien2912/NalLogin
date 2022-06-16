@@ -5,12 +5,21 @@ import Button from "../../UI/Button/Button";
 import ErrMsg from "../../UI/ErrMsg/ErrMsg";
 
 export default function NewTodoForm({ saveData }) {
+  // function GetDateFormat(date) {
+  //   var month = (date.getMonth() + 1).toString();
+  //   month = month.length > 1 ? month : "0" + month;
+  //   var day = date.getDate().toString();
+  //   day = day.length > 1 ? day : "0" + day;
+  //   return date.getFullYear() + "-" + month + "-" + day;
+  // }
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+
   const onSubmit = (data) => {
     const changeData = {
       ...data,
@@ -66,14 +75,14 @@ export default function NewTodoForm({ saveData }) {
   };
 
   return (
-    <>
+    <div className={classes.newForm}>
       <h1>Adjust Todo List</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={classes["form-control"]}>
           <div className={classes.control}>
             <label>Title</label>
-            <input
-              type="text"
+            <textarea
+              rows="1"
               placeholder="Title"
               {...register("title", { required: true, maxLength: 100 })}
             />
@@ -81,9 +90,9 @@ export default function NewTodoForm({ saveData }) {
           </div>
           <div className={classes.control}>
             <label>Description</label>
-            <input
-              type="text"
+            <textarea
               placeholder="Description"
+              rows="4"
               {...register("description", { required: true, maxLength: 999 })}
             />
             {errors.description && errorDescription()}
@@ -100,7 +109,7 @@ export default function NewTodoForm({ saveData }) {
         </div>
         <div className={classes.action}>
           <Button className={classes.addBtn} type="submit">
-            Add
+            Apply
           </Button>
           <Button
             onClick={resetHandler}
@@ -111,6 +120,6 @@ export default function NewTodoForm({ saveData }) {
           </Button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
