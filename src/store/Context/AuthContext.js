@@ -6,7 +6,9 @@ import "antd/dist/antd.css";
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") === "1" ? true : false
+  );
   const [role, setRole] = useState(localStorage.getItem("role"));
 
   const loginHandler = (data) => {

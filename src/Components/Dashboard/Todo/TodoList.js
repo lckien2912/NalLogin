@@ -16,22 +16,20 @@ function TodoList({ data, deleteItem }) {
   const newData = data.slice(start, end);
 
   return (
-    <>
+    <div className={classes.todo}>
       <h1 className={classes.heading}>Todo List </h1>
       <div className={classes.todoContainer}>
         <ul className={classes.todoList}>
-          {newData.map(({ id, title, description, date }) => {
-            return (
-              <TodoItem
-                id={id}
-                key={id}
-                title={title}
-                description={description}
-                date={new Date(date)}
-                deleteItem={deleteItem}
-              />
-            );
-          })}
+          {newData.map(({ id, title, description, date }) => (
+            <TodoItem
+              id={id}
+              key={id}
+              title={title}
+              description={description}
+              date={new Date(date)}
+              deleteItem={deleteItem}
+            />
+          ))}
         </ul>
         <div className={classes.pagination}>
           <Pagination
@@ -43,7 +41,7 @@ function TodoList({ data, deleteItem }) {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

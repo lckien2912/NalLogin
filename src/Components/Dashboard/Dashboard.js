@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Dashboard.module.css";
 import Card from "../UI/Card/Card";
-import Todo from "./Todo/Todo";
+import TodoList from "./Todo/TodoList";
 import CenterContainer from "../UI/CenterContainer/CenterContainer";
 import NewTodoForm from "./Todo/NewTodoForm";
 
@@ -35,8 +35,8 @@ function Dashboard() {
   return (
     <CenterContainer>
       <Card className={classes.home}>
-        <NewTodoForm saveData={saveData}></NewTodoForm>
-        <Todo newData={data} deleteItem={deleteItem}></Todo>
+        <NewTodoForm saveData={saveData} />
+        <TodoList data={data} deleteItem={deleteItem} />
       </Card>
     </CenterContainer>
   );

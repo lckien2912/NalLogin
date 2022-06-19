@@ -9,6 +9,21 @@ function TodoItem({ date, description, title, id, deleteItem }) {
   const { role } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
   const [editVisible, setEditVisible] = useState(false);
+  const [itemTitle, setItemTitle] = useState(title);
+  const [itemDescription, setItemDescription] = useState(description);
+  const [itemDate, setItemDate] = useState(date);
+
+  const takeEditData = (data) => {
+    let {
+      title: editTitle,
+      description: editDescription,
+      date: editDate,
+    } = data;
+    setItemTitle(editTitle);
+    setItemDescription(editDescription);
+    setItemDate(new Date(editDate));
+    console.log(data, new Date(date));
+  };
 
   const deleteHandler = () => {
     deleteItem(id);
@@ -25,10 +40,10 @@ function TodoItem({ date, description, title, id, deleteItem }) {
   return (
     <>
       <li className={classes.todoItem}>
-        <TodoDate date={date} />
+        <TodoDate date={itemDate} />
         <div className={classes.detail}>
-          <h2>{title}</h2>
-          <p>{description}</p>
+          <h2>{itemTitle}</h2>
+          <p>{itemDescription}</p>
         </div>
         {role === "Admin" && (
           <div className={classes.action}>
@@ -55,6 +70,7 @@ function TodoItem({ date, description, title, id, deleteItem }) {
         id={id}
         visible={editVisible}
         setVisible={setEditVisible}
+        takeEditData={takeEditData}
       />
     </>
   );

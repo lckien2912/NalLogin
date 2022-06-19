@@ -31,3 +31,17 @@
 .todoList {
   flex: 1;
 }
+
+.todo h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.todo h2 {
+  font-size: 1.4rem;
+}
+
+.todo {
+  height: calc(100% - 70px);
+}

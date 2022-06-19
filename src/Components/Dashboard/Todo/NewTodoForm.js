@@ -13,6 +13,7 @@ export default function NewTodoForm({ saveData }) {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     const changeData = {
       ...data,
       date: new Date(data.date),

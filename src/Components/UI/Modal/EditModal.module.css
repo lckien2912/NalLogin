@@ -13,9 +13,9 @@
 
 .modal-container {
   background-color: #fff;
+  width: 400px;
+  /* height: 400px; */
   border-radius: 0.5rem;
-  max-width: 300px;
-  max-height: 300px;
   margin: auto;
   padding: 2.5rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -31,4 +31,14 @@
 
 .modal.hide .modal-container {
   opacity: 0;
+}
+
+.form-control .control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.control label {
+  font-weight: bold;
 }
