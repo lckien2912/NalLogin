@@ -3,7 +3,7 @@ import classes from "./TodoList.module.css";
 import TodoItem from "./TodoItem";
 import { Pagination } from "antd";
 
-function TodoList({ data, deleteItem }) {
+function TodoList({ data, deleteItem, editData }) {
   const [current, setCurrent] = useState(1);
   const pageSize = 6;
 
@@ -28,6 +28,7 @@ function TodoList({ data, deleteItem }) {
               description={description}
               date={new Date(date)}
               deleteItem={deleteItem}
+              editData={editData}
             />
           ))}
         </ul>

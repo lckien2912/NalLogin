@@ -24,7 +24,7 @@ const AuthContextProvider = ({ children }) => {
       notification.open({
         message: "Login Failed",
         description: "Please check your email/password again!",
-        duration: 1,
+        duration: 3,
         key: "updatable",
         placement: "topRight",
       });

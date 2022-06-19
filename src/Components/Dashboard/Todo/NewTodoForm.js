@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import classes from "./NewTodoForm.module.css";
 import Button from "../../UI/Button/Button";
+import Modal from "../../UI/Modal/Modal";
 import ErrMsg from "../../UI/ErrMsg/ErrMsg";
+import { AuthContext } from "../../../store/Context/AuthContext";
 
 export default function NewTodoForm({ saveData }) {
   const {
@@ -11,9 +13,14 @@ export default function NewTodoForm({ saveData }) {
     formState: { errors },
     reset,
   } = useForm();
+  const [visible, setVisible] = useState(false);
+  const { isLoggedIn, logoutHandler } = useContext(AuthContext);
+
+  const openModal = () => {
+    setVisible(true);
+  };
 
   const onSubmit = (data) => {
-    console.log(data);
     const changeData = {
       ...data,
       date: new Date(data.date),
@@ -68,51 +75,65 @@ export default function NewTodoForm({ saveData }) {
   };
 
   return (
-    <div className={classes.newForm}>
-      <h1>Adjust Todo List</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={classes["form-control"]}>
-          <div className={classes.control}>
-            <label>Title</label>
-            <textarea
-              rows="1"
-              placeholder="Title"
-              {...register("title", { required: true, maxLength: 100 })}
-            />
-            {errors.title && errorTitle()}
-          </div>
-          <div className={classes.control}>
-            <label>Description</label>
-            <textarea
-              placeholder="Description"
-              rows="4"
-              {...register("description", { required: true, maxLength: 999 })}
-            />
-            {errors.description && errorDescription()}
-          </div>
-          <div className={classes.control}>
-            <label>Date Modified</label>
-            <input
-              type="date"
-              placeholder="Date"
-              {...register("date", { required: true })}
-            />
-            {errors.date && errorDate()}
-          </div>
-        </div>
-        <div className={classes.action}>
-          <Button className={classes.addBtn} type="submit">
-            Apply
+    <>
+      <div className={classes.newForm}>
+        {isLoggedIn && (
+          <Button className={classes.logoutBtn} onClick={openModal}>
+            Logout
           </Button>
-          <Button
-            onClick={resetHandler}
-            className={classes.resetBtn}
-            type="button"
-          >
-            Reset
-          </Button>
-        </div>
-      </form>
-    </div>
+        )}
+        <h1>Adjust Todo List</h1>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={classes["form-control"]}>
+            <div className={classes.control}>
+              <label>Title</label>
+              <textarea
+                rows="1"
+                placeholder="Title"
+                {...register("title", { required: true, maxLength: 100 })}
+              />
+              {errors.title && errorTitle()}
+            </div>
+            <div className={classes.control}>
+              <label>Description</label>
+              <textarea
+                placeholder="Description"
+                rows="4"
+                {...register("description", { required: true, maxLength: 999 })}
+              />
+              {errors.description && errorDescription()}
+            </div>
+            <div className={classes.control}>
+              <label>Date Modified</label>
+              <input
+                type="date"
+                placeholder="Date"
+                {...register("date", { required: true })}
+              />
+              {errors.date && errorDate()}
+            </div>
+          </div>
+          <div className={classes.action}>
+            <Button className={classes.addBtn} type="submit">
+              Apply
+            </Button>
+            <Button
+              onClick={resetHandler}
+              className={classes.resetBtn}
+              type="button"
+            >
+              Reset
+            </Button>
+          </div>
+        </form>
+      </div>
+      <Modal
+        visible={visible}
+        setVisible={setVisible}
+        clickHandler={logoutHandler}
+        title="Logout?"
+        message="Are you sure you want to log out?"
+      ></Modal>
+    </>
   );
 }

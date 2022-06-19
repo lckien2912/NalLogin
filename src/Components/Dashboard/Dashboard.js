@@ -32,11 +32,23 @@ function Dashboard() {
     });
   };
 
+  const takeEditData = (data) => {
+    const prevData = JSON.parse(localStorage.getItem("LIST_KEY"));
+    const newData = prevData.map((value) => {
+      if (value.id === data.id) {
+        return { ...data };
+      }
+      return value;
+    });
+    localStorage.setItem("LIST_KEY", JSON.stringify(newData));
+    setData(newData);
+  };
+
   return (
     <CenterContainer>
       <Card className={classes.home}>
         <NewTodoForm saveData={saveData} />
-        <TodoList data={data} deleteItem={deleteItem} />
+        <TodoList data={data} editData={takeEditData} deleteItem={deleteItem} />
       </Card>
     </CenterContainer>
   );
