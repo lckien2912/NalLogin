@@ -21,12 +21,13 @@ const AuthContextProvider = ({ children }) => {
       localStorage.setItem("isLoggedIn", "1");
       localStorage.setItem("role", validUser.role);
     } else {
-      notification.open({
+      notification.warning({
         message: "Login Failed",
         description: "Please check your email/password again!",
         duration: 3,
         key: "updatable",
         placement: "topRight",
+        style: {borderRadius: "8px"}
       });
     }
   };

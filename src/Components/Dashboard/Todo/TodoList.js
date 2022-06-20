@@ -2,15 +2,25 @@ import React, { useState } from "react";
 import classes from "./TodoList.module.css";
 import TodoItem from "./TodoItem";
 import { Pagination } from "antd";
+import Search from "../../UI/Search/Search";
 
 function TodoList({ data, deleteItem, editData }) {
   const [current, setCurrent] = useState(1);
-  const pageSize = 6;
 
   const onChange = (page) => {
     setCurrent(page);
   };
 
+  const takeSearchText= (text) => {
+    console.log(data)
+    const newData = data.filter(item => {
+      if(text.length === 0) return [...data]
+      else return( item.title.includes(text) || item.description.includes(text))
+    })
+    console.log(newData);
+  }
+
+  const pageSize = 6;
   const start = (current - 1) * pageSize;
   const end = start + pageSize;
   const newData = data.slice(start, end);
@@ -18,6 +28,7 @@ function TodoList({ data, deleteItem, editData }) {
   return (
     <div className={classes.todo}>
       <h1 className={classes.heading}>Todo List </h1>
+      <Search takeSearchText={takeSearchText}/>
       <div className={classes.todoContainer}>
         <ul className={classes.todoList}>
           {newData.map(({ id, title, description, date }) => (
@@ -29,6 +40,7 @@ function TodoList({ data, deleteItem, editData }) {
               date={new Date(date)}
               deleteItem={deleteItem}
               editData={editData}
+              setCurrent={setCurrent}
             />
           ))}
         </ul>

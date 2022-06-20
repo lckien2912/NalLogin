@@ -65,6 +65,7 @@ export default function NewTodoForm({ saveData }) {
         return;
     }
   };
+  
   const errorDate = () => {
     switch (errors.date?.type) {
       case "required":

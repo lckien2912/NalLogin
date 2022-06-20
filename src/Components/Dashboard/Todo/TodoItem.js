@@ -5,7 +5,7 @@ import Modal from "../../UI/Modal/Modal";
 import EditModal from "../../UI/Modal/EditModal";
 import { AuthContext } from "../../../store/Context/AuthContext";
 
-function TodoItem({ date, description, title, id, deleteItem, editData }) {
+function TodoItem({ date, description, title, id, deleteItem, editData, setCurrent }) {
   const { role } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
   const [editVisible, setEditVisible] = useState(false);
@@ -27,6 +27,7 @@ function TodoItem({ date, description, title, id, deleteItem, editData }) {
 
   const deleteHandler = () => {
     deleteItem(id);
+    setCurrent(1)
   };
 
   const openModal = () => {
