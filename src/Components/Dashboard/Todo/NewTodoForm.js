@@ -65,7 +65,7 @@ export default function NewTodoForm({ saveData }) {
         return;
     }
   };
-  
+
   const errorDate = () => {
     switch (errors.date?.type) {
       case "required":
@@ -83,7 +83,7 @@ export default function NewTodoForm({ saveData }) {
             Logout
           </Button>
         )}
-        <h1>Adjust Todo List</h1>
+        <h1>Create Todo List</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={classes["form-control"]}>
             <div className={classes.control}>
@@ -116,14 +116,14 @@ export default function NewTodoForm({ saveData }) {
           </div>
           <div className={classes.action}>
             <Button className={classes.addBtn} type="submit">
-              Apply
+              Add
             </Button>
             <Button
               onClick={resetHandler}
               className={classes.resetBtn}
               type="button"
             >
-              Reset
+              Undo
             </Button>
           </div>
         </form>

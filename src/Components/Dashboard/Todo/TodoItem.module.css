@@ -3,6 +3,7 @@
   cursor: pointer;
   transition: ease-in-out 0.2s;
   margin-bottom: 10px;
+  width: 50%;
 }
 
 .todoItem:hover {

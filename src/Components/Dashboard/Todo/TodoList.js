@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./TodoList.module.css";
 import TodoItem from "./TodoItem";
 import { Pagination } from "antd";
@@ -6,19 +6,26 @@ import Search from "../../UI/Search/Search";
 
 function TodoList({ data, deleteItem, editData }) {
   const [current, setCurrent] = useState(1);
-  const [searchData, setSearchData] = useState(data)
+  const [searchData, setSearchData] = useState(data);
+
+  useEffect(() => {
+    setSearchData(data);
+  }, [data]);
 
   const onChange = (page) => {
     setCurrent(page);
   };
 
-  const takeSearchText= (text) => {
-    const newData = data.filter(item => {
-      if(text.length === 0) return [...data]
-      else return( item.title.includes(text) || item.description.includes(text))
-    })
-    setSearchData(newData)
-  }
+  const takeSearchText = (text) => {
+    const newData =
+      text.length === 0
+        ? [...data]
+        : data.filter(
+            (item) =>
+              item.title.includes(text) || item.description.includes(text)
+          );
+    setSearchData(newData);
+  };
 
   const pageSize = 6;
   const start = (current - 1) * pageSize;
@@ -28,7 +35,7 @@ function TodoList({ data, deleteItem, editData }) {
   return (
     <div className={classes.todo}>
       <h1 className={classes.heading}>Todo List </h1>
-      <Search takeSearchText={takeSearchText}/>
+      <Search takeSearchText={takeSearchText} />
       <div className={classes.todoContainer}>
         <ul className={classes.todoList}>
           {newData.map(({ id, title, description, date }) => (
