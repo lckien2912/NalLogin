@@ -6,24 +6,24 @@ import Search from "../../UI/Search/Search";
 
 function TodoList({ data, deleteItem, editData }) {
   const [current, setCurrent] = useState(1);
+  const [searchData, setSearchData] = useState(data)
 
   const onChange = (page) => {
     setCurrent(page);
   };
 
   const takeSearchText= (text) => {
-    console.log(data)
     const newData = data.filter(item => {
       if(text.length === 0) return [...data]
       else return( item.title.includes(text) || item.description.includes(text))
     })
-    console.log(newData);
+    setSearchData(newData)
   }
 
   const pageSize = 6;
   const start = (current - 1) * pageSize;
   const end = start + pageSize;
-  const newData = data.slice(start, end);
+  const newData = searchData.slice(start, end);
 
   return (
     <div className={classes.todo}>
@@ -49,7 +49,7 @@ function TodoList({ data, deleteItem, editData }) {
             current={current}
             defaultPageSize={pageSize}
             onChange={onChange}
-            total={data.length}
+            total={searchData.length}
             wrapClassName={`${classes.paginationItem}`}
           />
         </div>

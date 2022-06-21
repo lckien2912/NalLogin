@@ -1,20 +1,23 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export default function Search({takeSearchText}) {
+export default function Search({ takeSearchText }) {
   const {
-    register,
     handleSubmit,
-    formState: { errors },
-    watch
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-  const searchText = watch(["Search"]);
-  takeSearchText(searchText);
+  const onSubmit = (data) => takeSearchText(data);
+
+  const handleSearchText = (e) => {
+    takeSearchText(e.target.value);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="search" placeholder="Search" {...register("Search", {})} />
+      <input
+        type="search"
+        onChange={handleSearchText}
+        placeholder="Search"
+      />
       <input type="submit" />
     </form>
   );
