@@ -41,7 +41,7 @@ export default function NewTodoForm({ saveData }) {
       case "maxLength":
         return (
           <ErrMsg className={classes.errors}>
-            Title length must be less than 100 chars
+            Title length must be less than 50 chars
           </ErrMsg>
         );
       default:
@@ -88,10 +88,10 @@ export default function NewTodoForm({ saveData }) {
           <div className={classes["form-control"]}>
             <div className={classes.control}>
               <label>Title</label>
-              <textarea
+              <input
                 rows="1"
                 placeholder="Title"
-                {...register("title", { required: true, maxLength: 100 })}
+                {...register("title", { required: true, maxLength: 50 })}
               />
               {errors.title && errorTitle()}
             </div>

@@ -17,6 +17,7 @@ function TodoList({ data, deleteItem, editData }) {
   };
 
   const takeSearchText = (text) => {
+    setCurrent(1)
     const newData =
       text.length === 0
         ? [...data]

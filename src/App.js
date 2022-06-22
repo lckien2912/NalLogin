@@ -7,6 +7,7 @@ import { AuthContext } from "./store/Context/AuthContext";
 function App() {
   const { isLoggedIn } = useContext(AuthContext);
 
+  console.log(isLoggedIn)
   return (
     <>
       {/* <Header /> */}
