@@ -57,22 +57,20 @@ function TodoItem({ date, description, title, id, deleteItem, editData, setCurre
           </div>
         )}
       </li>
-      <Modal
-        visible={visible}
+      {visible && <Modal
         setVisible={setVisible}
         clickHandler={deleteHandler}
         title="Delete Item?"
         message="Are you sure you want to delete this item?"
-      ></Modal>
-      <EditModal
+      ></Modal>}
+     {editVisible && <EditModal
         date={date}
         title={title}
         description={description}
         id={id}
-        visible={editVisible}
         setVisible={setEditVisible}
         takeEditData={takeEditData}
-      />
+      />}
     </>
   );
 }

@@ -4,12 +4,16 @@ import { createPortal } from "react-dom";
 import Button from "../../UI/Button/Button";
 import classes from "./EditModal.module.css";
 
-const modalRootDiv = document.createElement("div");
-modalRootDiv.id = "modal-root";
-document.body.appendChild(modalRootDiv);
+let modalRoot = document.getElementById("modal-root");
+
+if (!modalRoot) {
+  const modalRootDiv = document.createElement("div");
+  modalRootDiv.id = "modal-root";
+  document.body.appendChild(modalRootDiv);
+  modalRoot = modalRootDiv;
+}
 
 function EditModal({
-  visible,
   setVisible,
   date,
   title,
@@ -48,7 +52,7 @@ function EditModal({
   };
 
   return createPortal(
-    <div className={`${classes.modal} ${visible ? "" : classes.hide}`}>
+    <div className={`${classes.modal}`}>
       <div className={classes["modal-container"]}>
         <h1>Adjust Todo List</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -96,7 +100,7 @@ function EditModal({
         </form>
       </div>
     </div>,
-    modalRootDiv
+    modalRoot
   );
 }
 

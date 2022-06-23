@@ -5,9 +5,14 @@ import ErrMsg from "../../UI/ErrMsg/ErrMsg";
 import classes from "./EditModal.module.css";
 import Button from "../Button/Button";
 
-const modalRootDiv = document.createElement("div");
-modalRootDiv.id = "modal-root";
-document.body.appendChild(modalRootDiv);
+let modalRoot = document.getElementById("modal-root");
+
+if (!modalRoot) {
+  const modalRootDiv = document.createElement("div");
+  modalRootDiv.id = "modal-root";
+  document.body.appendChild(modalRootDiv);
+  modalRoot = modalRootDiv;
+}
 
 function CreateModal({ saveData, visible, setVisible }) {
   const {
@@ -74,7 +79,7 @@ function CreateModal({ saveData, visible, setVisible }) {
     }
   };
   return createPortal(
-    <div className={`${classes.modal} ${visible ? "" : classes.hide}`}>
+    <div className={`${classes.modal} `}>
       <div className={classes["modal-container"]}>
         <h1>Create Todo List</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -122,7 +127,7 @@ function CreateModal({ saveData, visible, setVisible }) {
         </form>
       </div>
     </div>,
-    modalRootDiv
+    modalRoot
   );
 }
 

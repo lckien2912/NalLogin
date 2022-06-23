@@ -2,18 +2,22 @@ import React from "react";
 import { createPortal } from "react-dom";
 import classes from "./Modal.module.css";
 
-const modalRootDiv = document.createElement("div");
-modalRootDiv.id = "modal-root";
-document.body.appendChild(modalRootDiv);
+let modalRoot = document.getElementById("modal-root");
 
-function Modal({ visible, setVisible, message, title, clickHandler }) {
+if (!modalRoot) {
+  const modalRootDiv = document.createElement("div");
+  modalRootDiv.id = "modal-root";
+  document.body.appendChild(modalRootDiv);
+  modalRoot = modalRootDiv;
+}
+
+function Modal({ setVisible, message, title, clickHandler }) {
   const onClickHandler = () => {
     clickHandler();
     setVisible(false);
   };
-
   return createPortal(
-    <div className={`${classes.modal} ${visible ? "" : classes.hide}`}>
+    <div className={`${classes.modal} `}>
       <div className={classes["modal-container"]}>
         <div className={`${classes["modal-desc"]}`}>
           <i className="fa-solid fa-triangle-exclamation"></i>
@@ -33,7 +37,7 @@ function Modal({ visible, setVisible, message, title, clickHandler }) {
         </div>
       </div>
     </div>,
-    modalRootDiv
+    modalRoot
   );
 }
 

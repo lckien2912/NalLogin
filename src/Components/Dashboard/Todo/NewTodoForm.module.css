@@ -1,5 +1,9 @@
 .newForm {
-  padding: 20px;
+  padding: 15px;
+  background-color: #005A8D;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .newForm h1 {
@@ -54,6 +58,11 @@ textarea {
   height: 35px;
   font-size: 1.4rem;
   /* margin-left: 10px; */
+}
+
+.logoutBtn{
+  width: 100%;
+  color: #333
 }
 
 .addBtn {

@@ -1,5 +1,6 @@
 .heading {
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem; */
+  margin: 20px 0
 }
 /* 
 ::-webkit-scrollbar {
@@ -28,10 +29,16 @@
 }
 
 .todoList {
-  /* flex: 1; */
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto;
   padding-left: 0;
+  gap: 20px;
+  width: 100%;
+  /* flex: 1; */
+  /* display: flex;
+  flex-wrap: wrap;
+  flex: 50% 50%;
+  justify-content: space-between; */
 }
 
 .todo h1 {

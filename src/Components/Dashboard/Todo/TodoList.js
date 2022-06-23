@@ -33,10 +33,12 @@ function TodoList({ data, deleteItem, editData }) {
   const end = start + pageSize;
   const newData = searchData.slice(start, end);
 
-  return (
+  return (<>
     <div className={classes.todo}>
-      <h1 className={classes.heading}>Todo List </h1>
       <Search takeSearchText={takeSearchText} />
+      <h1 className={classes.heading}>
+      <i className="fa-solid fa-list-check" style={{marginRight: "12px"}}></i> 
+        Todo List </h1>
       <div className={classes.todoContainer}>
         <ul className={classes.todoList}>
           {newData.map(({ id, title, description, date }) => (
@@ -54,6 +56,7 @@ function TodoList({ data, deleteItem, editData }) {
         </ul>
         <div className={classes.pagination}>
           <Pagination
+          style={{margin: "10px"}}
             current={current}
             defaultPageSize={pageSize}
             onChange={onChange}
@@ -63,6 +66,7 @@ function TodoList({ data, deleteItem, editData }) {
         </div>
       </div>
     </div>
+  </>
   );
 }
 
