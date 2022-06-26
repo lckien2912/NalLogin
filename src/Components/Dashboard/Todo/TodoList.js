@@ -17,7 +17,7 @@ function TodoList({ data, deleteItem, editData }) {
   };
 
   const takeSearchText = (text) => {
-    setCurrent(1)
+    setCurrent(1);
     const newData =
       text.length === 0
         ? [...data]
@@ -33,40 +33,47 @@ function TodoList({ data, deleteItem, editData }) {
   const end = start + pageSize;
   const newData = searchData.slice(start, end);
 
-  return (<>
-    <div className={classes.todo}>
-      <Search takeSearchText={takeSearchText} />
-      <h1 className={classes.heading}>
-      <i className="fa-solid fa-list-check" style={{marginRight: "12px"}}></i> 
-        Todo List </h1>
-      <div className={classes.todoContainer}>
-        <ul className={classes.todoList}>
-          {newData.map(({ id, title, description, date }) => (
-            <TodoItem
-              id={id}
-              key={id}
-              title={title}
-              description={description}
-              date={new Date(date)}
-              deleteItem={deleteItem}
-              editData={editData}
-              setCurrent={setCurrent}
+  return (
+    <>
+      <div className={classes.todo}>
+        <div className={classes.todoTop}>
+          <h1 className={classes.heading}>
+            <i
+              className="fa-solid fa-list-check"
+              style={{ marginRight: "12px" }}
+            ></i>
+            Todo List{" "}
+          </h1>
+          <Search takeSearchText={takeSearchText} />
+        </div>
+        <div className={classes.todoContainer}>
+          <ul className={classes.todoList}>
+            {newData.map(({ id, title, description, date }) => (
+              <TodoItem
+                id={id}
+                key={id}
+                title={title}
+                description={description}
+                date={new Date(date)}
+                deleteItem={deleteItem}
+                editData={editData}
+                setCurrent={setCurrent}
+              />
+            ))}
+          </ul>
+          <div className={classes.pagination}>
+            <Pagination
+              style={{ margin: "10px" }}
+              current={current}
+              defaultPageSize={pageSize}
+              onChange={onChange}
+              total={searchData.length}
+              wrapClassName={`${classes.paginationItem}`}
             />
-          ))}
-        </ul>
-        <div className={classes.pagination}>
-          <Pagination
-          style={{margin: "10px"}}
-            current={current}
-            defaultPageSize={pageSize}
-            onChange={onChange}
-            total={searchData.length}
-            wrapClassName={`${classes.paginationItem}`}
-          />
+          </div>
         </div>
       </div>
-    </div>
-  </>
+    </>
   );
 }
 

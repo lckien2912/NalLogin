@@ -1,9 +1,21 @@
 .newForm {
-  padding: 15px;
-  background-color: #005A8D;
+  padding: 20px;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 16px;
+}
+
+.userCard {
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 20px 0;
+}
+
+.userCard i {
+  padding: 10px;
 }
 
 .newForm h1 {
@@ -60,9 +72,20 @@ textarea {
   /* margin-left: 10px; */
 }
 
-.logoutBtn{
+.logoutBtn {
   width: 100%;
-  color: #333
+  color: red;
+  border: none;
+  padding: 5px 0;
+}
+
+.logoutBtn i {
+  margin: 10px 10px 10px 0;
+}
+
+.logoutBtn:hover {
+  background-color: red;
+  color: #fff;
 }
 
 .addBtn {
@@ -80,4 +103,20 @@ textarea {
   background-color: red;
   border-color: red;
   color: white;
+}
+
+.navList {
+  flex: 1;
+}
+
+.navList li {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #ccc;
+}
+.navList li i {
+  margin: 10px 10px 10px 0;
+  font-size: 1.6rem;
 }

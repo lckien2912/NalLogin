@@ -41,3 +41,9 @@
 .control label {
   font-weight: bold;
 }
+
+.action {
+  display: flex;
+  justify-content: space-between;
+  flex: 45% 45%;
+}

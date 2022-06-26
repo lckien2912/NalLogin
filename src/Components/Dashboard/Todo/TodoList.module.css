@@ -1,6 +1,6 @@
 .heading {
   /* margin-top: 1.5rem; */
-  margin: 20px 0
+  margin: 20px 0;
 }
 /* 
 ::-webkit-scrollbar {
@@ -42,9 +42,11 @@
 }
 
 .todo h1 {
-  text-align: center;
-  font-size: 2.4rem;
+  /* text-align: center; */
+  font-size: 2.8rem;
   font-weight: bold;
+  color: #fff;
+  margin: 0;
 }
 
 .todo h2 {
@@ -55,4 +57,10 @@
   height: 100%;
   padding: 20px;
   /* background-color: #f8f1f1; */
+}
+
+.todoTop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
