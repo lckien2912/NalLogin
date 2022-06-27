@@ -16,6 +16,7 @@ function Modal({ setVisible, message, title, clickHandler }) {
     clickHandler();
     setVisible(false);
   };
+  
   return createPortal(
     <div className={`${classes.modal} `}>
       <div className={classes["modal-container"]}>

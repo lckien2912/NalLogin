@@ -7,7 +7,6 @@
   display: flex;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease-in-out;
   opacity: 1;
 }
 
@@ -21,7 +20,8 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: #000;
   opacity: 1;
-  transition: all 0.3s ease-in-out;
+  animation: scaleUp 0.4s ease-in-out;
+  /* transform-origin: right; */
 }
 
 .modal.hide {

@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import classes from "./TodoList.module.css";
 import TodoItem from "./TodoItem";
 import { Pagination } from "antd";
 import Search from "../../UI/Search/Search";
+import Button from "../../UI/Button/Button";
+import CreateModal from "../../UI/Modal/CreateModal";
 
-function TodoList({ data, deleteItem, editData }) {
+function TodoList({ saveData, data, deleteItem, editData }) {
   const [current, setCurrent] = useState(1);
+  const [visibleCreateModal, setVisibleCreateModal] = useState(false);
   const [searchData, setSearchData] = useState(data);
 
   useEffect(() => {
@@ -14,6 +17,10 @@ function TodoList({ data, deleteItem, editData }) {
 
   const onChange = (page) => {
     setCurrent(page);
+  };
+
+  const openCreateModal = () => {
+    setVisibleCreateModal(true);
   };
 
   const takeSearchText = (text) => {
@@ -42,9 +49,15 @@ function TodoList({ data, deleteItem, editData }) {
               className="fa-solid fa-list-check"
               style={{ marginRight: "12px" }}
             ></i>
-            Todo List{" "}
+            Todo List
           </h1>
-          <Search takeSearchText={takeSearchText} />
+          <div className={classes.todoAction}>
+            <Button onClick={openCreateModal} className={classes.addBtn}>
+              <i className="fa-solid fa-plus"></i>
+              Add
+            </Button>
+            <Search takeSearchText={takeSearchText} />
+          </div>
         </div>
         <div className={classes.todoContainer}>
           <ul className={classes.todoList}>
@@ -73,6 +86,9 @@ function TodoList({ data, deleteItem, editData }) {
           </div>
         </div>
       </div>
+      {visibleCreateModal && (
+        <CreateModal setVisible={setVisibleCreateModal} saveData={saveData} />
+      )}
     </>
   );
 }

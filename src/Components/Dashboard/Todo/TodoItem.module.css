@@ -1,5 +1,6 @@
 .todoItem {
   display: flex;
+  flex: 1 0 10%;
   cursor: pointer;
   transition: ease-in-out 0.2s;
   width: 100%;
@@ -27,7 +28,7 @@
 }
 
 .detail h2 {
-  color: #fff;
+  color: #f9b52e;
   margin: 0;
   font-size: 1.8rem;
   font-weight: bold;

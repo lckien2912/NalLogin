@@ -47,8 +47,8 @@ function Dashboard() {
   return (
     <CenterContainer>
       <Card className={classes.home}>
-        <NewTodoForm saveData={saveData} />
-        <TodoList  data={data} editData={takeEditData} deleteItem={deleteItem} />
+        <NewTodoForm />
+        <TodoList saveData={saveData} data={data} editData={takeEditData} deleteItem={deleteItem} />
       </Card>
     </CenterContainer>
   );
