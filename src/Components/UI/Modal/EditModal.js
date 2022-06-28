@@ -13,21 +13,8 @@ if (!modalRoot) {
   modalRoot = modalRootDiv;
 }
 
-function EditModal({
-  setVisible,
-  date,
-  title,
-  description,
-  takeEditData,
-  id,
-}) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-    watch,
-  } = useForm();
+function EditModal({ setVisible, date, title, description, takeEditData, id }) {
+  const { register, handleSubmit, reset, watch } = useForm();
 
   const watchAllFields = watch();
 
